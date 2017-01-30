@@ -57,7 +57,7 @@
         </div>
         <div class="collapse navbar-collapse" id="myNavbar">
             <ul class="nav navbar-nav">
-                <li ><a href="/home.jsp">Home</a></li>
+                <li ><a href="/home">Home</a></li>
                 <li class="active"><a href="#">Create</a></li>
             </ul>
             <ul class="nav navbar-nav navbar-right">
@@ -103,6 +103,18 @@
                     <label class="control-label col-sm-2" for="isle">Isle:</label>
                     <div class="col-sm-10">
                         <input type="number" class="form-control" id="isle" name="isle" placeholder="Enter isle">
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="control-label col-sm-2" for="category">Category:</label>
+                    <div class="col-sm-10">
+                        <select type="number" class="form-control" id="category" name="category" placeholder="Choose ..." required>
+                            <option value="1">Category 1</option>
+                            <option value="2">Category 2</option>
+                            <option value="3">Category 3</option>
+                            <option value="4">Category 4</option>
+                            <option value="5">Category 5</option>
+                        </select>
                     </div>
                 </div>
                 <div class="form-group">

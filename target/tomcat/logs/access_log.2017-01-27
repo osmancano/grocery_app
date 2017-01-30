@@ -1,0 +1,2 @@
+0:0:0:0:0:0:0:1 - - [27/Jan/2017:15:23:25 -0500] "GET / HTTP/1.1" 200 2276 http-bio-8080-exec-4 30
+0:0:0:0:0:0:0:1 - - [27/Jan/2017:15:23:25 -0500] "GET /assets/js/ie10-viewport-bug-workaround.js HTTP/1.1" 200 2276 http-bio-8080-exec-5 3

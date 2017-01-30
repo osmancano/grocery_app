@@ -11,6 +11,7 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
+import java.util.List;
 
 /**
  * Created by jasonskipper on 1/26/17.
@@ -23,6 +24,7 @@ public class CreateGroceryItemServlet extends HttpServlet {
         String price = request.getParameter("price");
         String quantity = request.getParameter("quantity");
         String isle = request.getParameter("isle");
+        int category = Integer.parseInt(request.getParameter("category"));
 
         double priceAsDouble = 0;
         int quantityAsInt = 0;
@@ -46,12 +48,13 @@ public class CreateGroceryItemServlet extends HttpServlet {
 
 
         // create grocery item from data
-        GroceryItem item = new GroceryItem(name, priceAsDouble, quantityAsInt, isleAsInt);
+        GroceryItem item = new GroceryItem(name, priceAsDouble, quantityAsInt, isleAsInt, category);
 
         // save to list
         GroceryService gs = new GroceryService();
         gs.save((IronYardUser)request.getSession().getAttribute("ironyard_user"), item);
-
+        List<GroceryItem> gItems = gs.getAll((IronYardUser)request.getSession().getAttribute("ironyard_user"));
+        request.getSession().setAttribute("gItems",gItems);
         // add to session 'success' message flag
         request.setAttribute("msg_success", true);
 

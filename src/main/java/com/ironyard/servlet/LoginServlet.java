@@ -1,8 +1,11 @@
 package com.ironyard.servlet;
 
+import com.ironyard.com.ironyard.service.GroceryService;
 import com.ironyard.com.ironyard.service.UserService;
+import com.ironyard.data.GroceryItem;
 import com.ironyard.data.IronYardUser;
 
+import javax.servlet.GenericServlet;
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -10,6 +13,7 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
+import java.util.ArrayList;
 import java.util.List;
 
 /**
@@ -26,7 +30,9 @@ public class LoginServlet extends HttpServlet {
 
         IronYardUser found = uServ.getUser(email, pass);
         request.getSession().setAttribute("ironyard_user", found);
-
+        GroceryService gs = new GroceryService();
+        List<GroceryItem> gItems = gs.getAll(found);
+        request.getSession().setAttribute("gItems",gItems);
         String nextJSP = "/home.jsp";
 
         if(found == null){

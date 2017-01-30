@@ -14,7 +14,14 @@ import static org.junit.Assert.*;
 public class GroceryServiceTest {
     @Test
     public void getAll() throws Exception {
-
+        GroceryService gService = new GroceryService();
+        IronYardUser osman = new IronYardUser();
+        osman.setUsername("canohibro@gmail.com");
+        IronYardUser wail = new IronYardUser();
+        osman.setUsername("wail.yousif@gmail.com");
+        List<GroceryItem> lItemsOne = gService.getAll(osman);
+        List<GroceryItem> lItemsTwo = gService.getAll(wail);
+        assertNotEquals("Users must not share Lists", osman,wail);
     }
 
     @Test
@@ -54,4 +61,20 @@ public class GroceryServiceTest {
         }
     }
 
+    @Test
+    public void loadItems(){
+        IronYardUser aUser = new IronYardUser();
+        GroceryService gs = new GroceryService();
+        aUser.setUsername("canohibro@gmail.com");
+        GroceryItem item;
+        for(int i = 1; i < 1001; i++ ){
+            item = new GroceryItem();
+            item.setName("ITEM "+i);
+            item.setIsle(i%10 +1);
+            item.setPrice(4.99);
+            item.setQuantity(70);
+            item.setCategory((i%5) +1);
+            gs.save(aUser, item);
+        }
+    }
 }

@@ -1,3 +1,7 @@
+<%@ page import="com.ironyard.data.GroceryItem" %>
+<%@ page import="java.util.List" %>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
+<%@ page isELIgnored="false" %>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -55,7 +59,7 @@
         </div>
         <div class="collapse navbar-collapse" id="myNavbar">
             <ul class="nav navbar-nav">
-                <li class="active"><a href="#">Home</a></li>
+                <li class="active"><a href="/home">Home</a></li>
                 <li><a href="/create.jsp">Create</a></li>
             </ul>
             <ul class="nav navbar-nav navbar-right">
@@ -68,17 +72,47 @@
 <div class="container-fluid text-center">
     <div class="row content">
         <div class="col-sm-2 sidenav">
-
         </div>
         <div class="col-sm-8 text-left">
             <h1>Welcome To Grocery List</h1>
-            <ul>
-                <li>Tomatoes, 12 @ $3.95 on isle 7</li>
-                <li>Tomatoes, 12 @ $3.95 on isle 7</li>
-                <li>Tomatoes, 12 @ $3.95 on isle 7</li>
-                <li>Tomatoes, 12 @ $3.95 on isle 7</li>
-                <li>Tomatoes, 12 @ $3.95 on isle 7</li>
-            </ul>
+            <form action="/home" method="post" class="form-inline">
+                <p>filter by category:</p>
+                <div class="form-group">
+                    <label class="control-label" for="category">Category:</label>
+                    <select type="number" class="form-control" id="category" name="category" placeholder="Choose ..." required>
+                        <option value="0">All</option>
+                        <option value="1">Category 1</option>
+                        <option value="2">Category 2</option>
+                        <option value="3">Category 3</option>
+                        <option value="4">Category 4</option>
+                        <option value="5">Category 5</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <div>
+                        <button type="submit" class="btn btn-info">Go</button>
+                    </div>
+                </div>
+            </form>
+            <table class="table">
+                <tr>
+                    <th>Name</th>
+                    <th>Quantity</th>
+                    <th>Price</th>
+                    <th>isle</th>
+                    <th>Category</th>
+                </tr>
+                <c:forEach items="${gItems}" var="gItem">
+                    <tr>
+                        <td><c:out value="${gItem.name}"/></td>
+                        <td><c:out value="${gItem.quantity}"/></td>
+                        <td><c:out value="$${gItem.price}"/></td>
+                        <td><c:out value="${gItem.isle}"/></td>
+                        <td><c:out value="${gItem.category}"/></td>
+                    </tr>
+                </c:forEach>
+
+            </table>
             <hr>
 
         </div>

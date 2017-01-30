@@ -8,16 +8,18 @@ public class GroceryItem {
     private double price;
     private int quantity;
     private int isle;
+    private int category;
 
     public GroceryItem(){
 
     }
 
-    public GroceryItem(String name, double price, int quantity, int isle){
+    public GroceryItem(String name, double price, int quantity, int isle, int category){
         this.name = name;
         this.isle = isle;
         this.price = price;
         this.quantity = quantity;
+        this.category = category;
     }
 
     public String getName() {
@@ -50,5 +52,13 @@ public class GroceryItem {
 
     public void setIsle(int isle) {
         this.isle = isle;
+    }
+
+    public int getCategory() {
+        return category;
+    }
+
+    public void setCategory(int category) {
+        this.category = category;
     }
 }
